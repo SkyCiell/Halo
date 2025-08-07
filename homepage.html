@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FakeStore - Your One Stop Shop</title>
+    <link href="src/output.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before {
+        content: "\f3c2";
+      }
+    </style>
+  </head>
+  <body class="bg-white" id="top">
+    <!-- Header Section -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <div class="flex items-center"></div>
+
+          <!-- Navigation Menu -->
+          <nav class="hidden md:flex items-center space-x-8">
+            <a
+              href="#top"
+              class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300"
+              >Beranda</a
+            >
+            <a
+              href="#featured"
+              class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300"
+              >Produk Unggulan</a
+            >
+            <a
+              href="#categories"
+              class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300"
+              >Kategori Produk</a
+            >
+          </nav>
+
+          <!-- Right Side Icons -->
+          <div class="flex items-center space-x-6">
+            <!-- Search Bar -->
+            <div class="relative hidden md:block">
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Cari produk..."
+                class="w-64 pl-10 pr-4 py-2 bg-gray-50 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all duration-300"
+              />
+              <div
+                class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+              >
+                <i class="ri-search-line"></i>
+              </div>
+            </div>
+
+                        <a
+              href="cart.html"
+              class="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-50 cursor-pointer transition-colors duration-300"
+            >
+              <i class="ri-shopping-cart-line text-xl text-gray-700"></i>
+              <span
+                class="absolute -top-1 -right-1 bg-blue-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center cart-count"
+                >0</span
+              >
+            </a>
+
+            <!-- User Account -->
+            <div class="relative">
+              <div
+                id="userIcon"
+                class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-50 cursor-pointer transition-colors duration-300"
+              >
+                <img
+                  src="https://i.pinimg.com/736x/cc/73/c1/cc73c18b34709ad89fe160e4b025ae3c.jpg"
+                  alt="User Avatar"
+                  class="w-8 h-8 rounded-full"
+                />
+              </div>
+
+              <!-- Popup Profile -->
+              <div
+                id="userPopup"
+                class="absolute right-0 mt-2 w-72 bg-white rounded-lg shadow-lg border hidden z-50"
+              >
+                <div class="p-4 border-b">
+                  <div class="flex items-center space-x-3">
+                    <img
+                      src="https://i.pinimg.com/736x/cc/73/c1/cc73c18b34709ad89fe160e4b025ae3c.jpg"
+                      alt="Avatar"
+                      class="w-12 h-12 rounded-full"
+                    />
+                    <div>
+                      <p class="text-sm text-gray-600">Lokasi :</p>
+                      <p class="text-sm font-medium text-gray-800">
+                        Jl KSU GG Jalan No 13
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-4 space-y-3">
+                  <a
+                    href="profile.html"
+                    class="flex items-center space-x-2 text-sm text-gray-700 hover:text-blue-600 transition-colors duration-300"
+                  >
+                    <i class="ri-settings-3-line"></i>
+                    <span>Pengaturan Profil</span>
+                  </a>
+                  <a
+                    href="landingpage.html"
+                    class="flex items-center space-x-2 text-sm text-red-600 hover:text-red-700 transition-colors duration-300"
+                  >
+                    <i class="ri-logout-box-line"></i>
+                    <span>Log out</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Shopping Cart --
+
+            <!-- Mobile Menu Button -->
+            <button
+              class="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-50 transition-colors duration-300"
+            >
+              <i class="ri-menu-line text-xl text-gray-700"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero-section relative h-[500px] flex items-center">
+      <div class="absolute inset-0 w-full h-full">
+        <img
+          src="https://png.pngtree.com/template/20210915/ourmid/pngtree-e-commerce-tmall-summer-mad-summer-season-blue-womens-clothing-banner-image_607439.jpg"
+          alt="Fashion Banner"
+          class="w-full h-full object-cover object-center"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"
+        ></div>
+      </div>
+      <div class="container mx-auto px-4 z-10">
+        <div class="max-w-xl text-white">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            Temukan Gaya Fashion Terbaikmu
+          </h1>
+          <p class="text-xl mb-8">Koleksi Pakaian Premium Terlengkap</p>
+        </div>
+      </div>
+    </section>
+    <!-- Featured Products -->
+    <section id="featured" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-4">Produk Unggulan</h2>
+        <p class="text-gray-600 text-center mb-10">
+          Produk terbaik dengan kualitas premium
+        </p>
+        <!-- Products Grid -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          id="productsGrid"
+        >
+          <!-- Products will be loaded here -->
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-10 space-y-4">
+          <button
+            id="loadMoreBtn"
+            class="bg-blue-500 text-white px-8 py-3 rounded-full text-lg font-medium"
+          >
+            Lihat Lebih Banyak
+          </button>
+          <button
+            id="showAllBtn"
+            class="bg-blue-500 text-white px-8 py-3 rounded-full text-lg font-medium block mx-auto"
+          >
+            Lihat Semua Barang
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- Categories Section -->
+    <section id="categories" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-4">Kategori Produk</h2>
+        <p class="text-gray-600 text-center mb-10">
+          Temukan produk yang sesuai dengan kebutuhan Anda
+        </p>
+        <div class="category-scroll flex space-x-6 overflow-x-auto pb-4">
+          <!-- Category 1 -->
+          <div
+            class="flex-shrink-0 w-64 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-4"
+            >
+              <i class="ri-gamepad-line text-2xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Pakaian Pria</h3>
+            <p class="text-gray-600 mb-4">Koleksi pakaian pria terbaik</p>
+            <a href="#" class="text-primary font-medium flex items-center">
+              Lihat Produk
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+          <!-- Category 2 -->
+          <div
+            class="flex-shrink-0 w-64 bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-secondary bg-opacity-10 rounded-full mb-4"
+            >
+              <i class="ri-keyboard-box-line text-2xl text-secondary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Pakaian Wanita</h3>
+            <p class="text-gray-600 mb-4">Koleksi pakaian wanita terbaik</p>
+            <a href="#" class="text-secondary font-medium flex items-center">
+              Lihat Produk
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+          <!-- Category 3 -->
+          <div
+            class="flex-shrink-0 w-64 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-purple-500 bg-opacity-10 rounded-full mb-4"
+            >
+              <i class="ri-wifi-line text-2xl text-purple-500"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Elektronik</h3>
+            <p class="text-gray-600 mb-4">Produk elektronik terbaru</p>
+            <a href="#" class="text-purple-500 font-medium flex items-center">
+              Lihat Produk
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+          <!-- Category 4 -->
+          <div
+            class="flex-shrink-0 w-64 bg-gradient-to-br from-amber-50 to-amber-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-amber-500 bg-opacity-10 rounded-full mb-4"
+            >
+              <i class="ri-tools-line text-2xl text-amber-500"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Perhiasan</h3>
+            <p class="text-gray-600 mb-4">Koleksi perhiasan eksklusif</p>
+            <a href="#" class="text-amber-500 font-medium flex items-center">
+              Lihat Produk
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+          <!-- Category 5 -->
+          <div
+            class="flex-shrink-0 w-64 bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-red-500 bg-opacity-10 rounded-full mb-4"
+            >
+              <i class="ri-computer-line text-2xl text-red-500"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Aksesoris</h3>
+            <p class="text-gray-600 mb-4">Aksesoris fashion terkini</p>
+            <a href="#" class="text-red-500 font-medium flex items-center">
+              Lihat Produk
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Special Offers -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-4">Penawaran Spesial</h2>
+        <p class="text-gray-600 text-center mb-10">
+          Jangan lewatkan diskon dan penawaran terbatas kami
+        </p>
+        <!-- Featured Deal -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="flex flex-col md:flex-row">
+            <div class="md:w-2/5 h-48 md:h-64">
+              <img
+                src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+                alt="Featured Deal"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <div class="md:w-3/5 p-6 flex flex-col justify-center">
+              <div class="flex items-center mb-3">
+                <span
+                  class="bg-red-100 text-red-600 text-xs font-medium px-2 py-1 rounded-full"
+                  >Penawaran Terbaik</span
+                >
+                <div class="flex items-center ml-3">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-half-fill"></i>
+                  </div>
+                  <span class="text-gray-500 text-xs ml-2">(98)</span>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Premium Jaket Collection</h3>
+              <p class="text-gray-600 text-sm mb-3">
+                Jaket premium dengan desain modern dan elegan. Dilengkapi dengan
+                kantong yang banyak dan bahan berkualitas tinggi.
+              </p>
+              <div class="flex items-baseline mb-4">
+                <span class="text-2xl font-bold text-gray-900">Rp 899.000</span>
+                <span class="text-base text-gray-500 line-through ml-2"
+                  >Rp 1.499.000</span
+                >
+                <span
+                  class="bg-green-100 text-green-600 text-xs font-medium px-2 py-1 rounded ml-2"
+                  >Hemat 40%</span
+                >
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <button
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-button text-sm font-medium transition-colors whitespace-nowrap"
+                >
+                  Beli Sekarang
+                </button>
+                <button
+                  class="border border-gray-300 hover:border-blue-600 text-gray-700 hover:text-blue-600 px-4 py-2 rounded-button text-sm font-medium transition-colors whitespace-nowrap"
+                >
+                  Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="api.js"></script>
+  

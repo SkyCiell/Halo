@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Pengguna</title>
+    <link href="src/output.css" rel="stylesheet" />
+    <script src="api.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+  </head>
+  <body class="bg-[#263034] min-h-screen font-sans">
+    <!-- Header -->
+      <div
+        class="bg-[#263034] shadow-md p-4 flex items-center justify-between rounded-b-xl"
+      >
+        <div class="flex items-center space-x-2">
+          <a
+            href="homepage.html"
+            class="text-[#d1b892] text-lg hover:text-[#e5c9a3] transition-colors"
+          >
+            <i class="ri-arrow-left-line"></i>
+          </a>
+          <span class="text-lg font-medium text-[#d1b892]">Profile</span>
+        </div>
+        <a
+          href="homepage.html"
+          class="text-[#d1b892] hover:text-red-700 transition-colors"
+        >
+          <i class="ri-logout-box-line"></i>
+        </a>
+      </div>
+
+    <!-- Profil Atas -->
+    <div class="flex flex-col items-center mt-6">
+      <div class="relative">
+        <img
+          src="https://i.pinimg.com/736x/cc/73/c1/cc73c18b34709ad89fe160e4b025ae3c.jpg"
+          alt="Avatar"
+          class="w-32 h-32 rounded-full shadow-md border-4 border-[#263034]"
+        />
+        <button
+          class="absolute bottom-0 right-0 bg-[#d1b892] text-[#263034] p-2 rounded-full shadow-lg hover:bg-[#c0a883] transition-colors"
+        >
+          <i class="ri-camera-line"></i>
+        </button>
+      </div>
+      <div
+        class="mt-4 p-4 bg-[#263034] rounded-xl shadow-md text-center w-full max-w-md"
+      >
+        <h2 class="text-2xl font-bold text-[#d1b892]">Pi Rapi</h2>
+        <p class="text-[#d1b892] mt-1">Depok</p>
+        <div class="flex justify-center items-center mt-2 space-x-4">
+          <div class="text-center">
+            <p class="text-[#d1b892] text-sm">Posts</p>
+            <p class="font-semibold text-[#d1b892]">120</p>
+          </div>
+          <div class="text-center">
+            <p class="text-[#d1b892] text-sm">Followers</p>
+            <p class="font-semibold text-[#d1b892]">1.2K</p>
+          </div>
+          <div class="text-center">
+            <p class="text-[#d1b892] text-sm">Following</p>
+            <p class="font-semibold text-[#d1b892]">500</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Informasi -->
+    <div class="mt-8 max-w-3xl mx-auto p-8 bg-[#263034] rounded-xl shadow-md">
+      <h3 class="text-2xl font-semibold mb-6 text-[#d1b892]">Information</h3>
+      <div class="space-y-4 text-base text-[#d1b892]">
+        <div
+          class="flex justify-between items-center py-3 border-b border-[#d1b892]"
+        >
+          <div class="flex items-center">
+            <i class="ri-global-line text-[#d1b892] mr-3 text-xl"></i>
+            <span class="font-medium text-[#d1b892]">Website</span>
+          </div>
+          <span class="text-[#d1b892]">WWW.Keyboard.com</span>
+        </div>
+        <div
+          class="flex justify-between items-center py-3 border-b border-[#d1b892]"
+        >
+          <div class="flex items-center">
+            <i class="ri-mail-line text-[#d1b892] mr-3 text-xl"></i>
+            <span class="font-medium text-[#d1b892]">Email</span>
+          </div>
+          <span class="text-[#d1b892]">ra***@gmail.com</span>
+        </div>
+        <div
+          class="flex justify-between items-center py-3 border-b border-[#d1b892]"
+        >
+          <div class="flex items-center">
+            <i class="ri-phone-line text-[#d1b892] mr-3 text-xl"></i>
+            <span class="font-medium text-[#d1b892]">Phone</span>
+          </div>
+          <span class="text-[#d1b892]">097979832463289</span>
+        </div>
+        <div
+          class="flex justify-between items-center py-3 border-b border-[#d1b892]"
+        >
+          <div class="flex items-center">
+            <i class="ri-calendar-line text-[#d1b892] mr-3 text-xl"></i>
+            <span class="font-medium text-[#d1b892]">Joined</span>
+          </div>
+          <span class="text-[#d1b892]">5/6/2025</span>
+        </div>
+        <div
+          class="flex justify-between items-center py-3 border-b border-[#d1b892]"
+        >
+          <div class="flex items-center">
+            <i class="ri-map-pin-line text-[#d1b892] mr-3 text-xl"></i>
+            <span class="font-medium text-[#d1b892]">Location</span>
+          </div>
+          <span class="text-[#d1b892]">Jl KSU gang Jalan/ No 13</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+  </body>
+</html>

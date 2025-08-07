@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KeyboardKing - Find Your Dream Keyboard</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#3b82f6", secondary: "#10b981" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before {
+        content: "\f3c2";
+      }
+    </style>
+  </head>
+  <body class="bg-white" id="top">
+    <!-- Header Section -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex items-center justify-between">
+          <!-- Navigation Menu -->
+          <nav class="hidden md:flex items-center space-x-8">
+            <a
+              href="#top"
+              class="text-gray-800 font-medium hover:text-primary transition-colors"
+              >Beranda</a
+            >
+            <a
+              href="#featured"
+              class="text-gray-800 font-medium hover:text-primary transition-colors"
+              >Produk</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-800 font-medium hover:text-primary transition-colors"
+              >Kontak</a
+            >
+          </nav>
+          <!-- Right Side Icons -->
+          <div class="flex items-center space-x-4">
+            <!-- Search Icon -->
+            <div class="relative hidden md:block">
+              <input
+                type="text"
+                placeholder="Cari barang..."
+                class="pl-10 pr-4 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent w-64"
+              />
+              <div
+                class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400"
+              >
+                <i class="ri-search-line"></i>
+              </div>
+            </div>
+            <!-- Login Button -->
+            <a
+              href="login.html"
+              class="hidden md:flex items-center gap-2 px-4 py-2 border border-primary text-primary hover:bg-primary hover:text-white rounded-full transition-colors"
+            >
+              <i class="ri-login-box-line"></i>
+              <span>Login</span>
+            </a>
+            <!-- Register Button -->
+            <a
+              href="register.html"
+              class="hidden md:flex items-center gap-2 px-4 py-2 bg-primary text-white hover:bg-blue-600 rounded-full transition-colors"
+            >
+              <i class="ri-user-add-line"></i>
+              <span>Register</span>
+            </a>
+            <!-- Mobile Menu Button -->
+            <button
+              class="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100"
+            >
+              <i class="ri-menu-line text-xl text-gray-700"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero-section relative h-[500px] flex items-center">
+      <div class="absolute inset-0 w-full h-full">
+        <img
+          src="https://png.pngtree.com/template/20210915/ourmid/pngtree-e-commerce-tmall-summer-mad-summer-season-blue-womens-clothing-banner-image_607439.jpg"
+          alt="Fashion Banner"
+          class="w-full h-full object-cover object-center"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"
+        ></div>
+      </div>
+      <div class="container mx-auto px-4 z-10">
+        <div class="max-w-xl text-white">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            Temukan Gaya Fashion Terbaikmu
+          </h1>
+          <p class="text-xl mb-8">Koleksi Pakaian Premium Terlengkap</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Grid -->
+    <div
+      id="product-grid"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-4"
+    >
+      <!-- Products will be loaded here dynamically -->
+    </div>
+    <!-- Load More Button -->
+    <div class="text-center mt-10 space-y-4">
+      <button
+        id="loadMoreBtn"
+        class="bg-blue-500 text-white px-8 py-3 rounded-full text-lg font-medium"
+      >
+        Lihat Lebih Banyak
+      </button>
+      <button
+        id="showAllBtn"
+        class="bg-blue-500 text-white px-8 py-3 rounded-full text-lg font-medium block mx-auto"
+      >
+        Lihat Semua Item
+      </button>
+    </div>
+    <!-- Featured Products -->
+    <section id="featured" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-4">Produk Unggulan</h2>
+        <p class="text-gray-600 text-center mb-10">
+          Barang terbaik dengan kualitas premium
+        </p>
+        <!-- Filter and Sort -->
+        <div class="flex flex-col md:flex-row justify-between mb-8 gap-4">
+          <div class="flex flex-wrap gap-3">
+            <div class="relative">
+              <button
+                class="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-button bg-white text-gray-700 whitespace-nowrap"
+              >
+                <span>Kategori</span>
+                <i class="ri-arrow-down-s-line"></i>
+              </button>
+            </div>
+            <div class="relative">
+              <button
+                class="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-button bg-white text-gray-700 whitespace-nowrap"
+              >
+                <span>Merek</span>
+                <i class="ri-arrow-down-s-line"></i>
+              </button>
+            </div>
+            <div class="relative">
+              <button
+                class="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-button bg-white text-gray-700 whitespace-nowrap"
+              >
+                <span>Harga</span>
+                <i class="ri-arrow-down-s-line"></i>
+              </button>
+            </div>
+          </div>
+          <div class="relative">
+            <button
+              class="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-button bg-white text-gray-700 whitespace-nowrap"
+            >
+              <span>Urutkan: Terbaru</span>
+              <i class="ri-arrow-down-s-line"></i>
+            </button>
+          </div>
+        </div>
+        <!-- Products Grid -->
+        <div
+          id="product-grid"
+          class="flex overflow-x-auto gap-6 pb-4 scroll-smooth"
+        >
+          <!-- Product 1 -->
+          <div
+            class="product-card flex-shrink-0 w-72 bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg hover:-translate-y-1 cursor-pointer"
+            data-id="1"
+          >
+            <div class="h-64 overflow-hidden">
+              <img
+                src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+                alt="Fjallraven Backpack"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <div class="p-5">
+              <div class="flex items-center mb-2">
+                <div class="flex text-yellow-400">
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-half-fill"></i>
+                </div>
+                <span class="text-gray-500 text-sm ml-2">(120)</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-1">Fjallraven Backpack</h3>
+              <p class="text-gray-500 text-sm mb-3">Tas Ransel Premium</p>
+              <div class="flex justify-between items-center">
+                <span class="text-xl font-bold text-gray-900"
+                  >Rp 1.599.000</span
+                >
+                <button
+                  onclick="event.stopPropagation(); addToCart(1);"
+                  class="add-to-cart-btn bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-button text-sm font-medium transition-colors"
+                >
+                  Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Product 2 -->
+          <div
+            class="product-card flex-shrink-0 w-72 bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg hover:-translate-y-1 cursor-pointer"
+            data-id="2"
+          >
+            <div class="h-64 overflow-hidden">
+              <img
+                src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
+                alt="Mens Casual T-Shirt"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <div class="p-5">
+              <div class="flex items-center mb-2">
+                <div class="flex text-yellow-400">
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-line"></i>
+                </div>
+                <span class="text-gray-500 text-sm ml-2">(87)</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-1">Mens Casual T-Shirt</h3>
+              <p class="text-gray-500 text-sm mb-3">Kaos Casual Premium</p>
+              <div class="flex justify-between items-center">
+                <span class="text-xl font-bold text-gray-900"
+                  >Rp 1.249.000</span
+                >
+                <button
+                  onclick="event.stopPropagation(); addToCart(2);"
+                  class="add-to-cart-btn bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-button text-sm font-medium transition-colors"
+                >
+                  Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Product 3 -->
+          <div
+            class="product-card flex-shrink-0 w-72 bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg hover:-translate-y-1 cursor-pointer"
+            data-id="3"
+          >
+            <div class="h-64 overflow-hidden">
+              <img
+                src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+                alt="Mens Cotton Jacket"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <div class="p-5">
+              <div class="flex items-center mb-2">
+                <div class="flex text-yellow-400">
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                </div>
+                <span class="text-gray-500 text-sm ml-2">(156)</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-1">Mens Cotton Jacket</h3>
+              <p class="text-gray-500 text-sm mb-3">Jaket Cotton Premium</p>
+              <div class="flex justify-between items-center">
+                <span class="text-xl font-bold text-gray-900"
+                  >Rp 1.399.000</span
+                >
+                <button
+                  onclick="event.stopPropagation(); addToCart(3);"
+                  class="add-to-cart-btn bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-button text-sm font-medium transition-colors"
+                >
+                  Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-10">
+          <button
+            class="border border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-button font-medium transition-colors whitespace-nowrap"
+          >
+            Lihat Semua Produk
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- Special Offers -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-4">Penawaran Spesial</h2>
+        <p class="text-gray-600 text-center mb-10">
+          Jangan lewatkan diskon dan penawaran terbatas kami
+        </p>
+        <!-- Flash Sale Banner -->
+        <div
+          class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg shadow-lg overflow-hidden mb-6"
+        >
+          <div class="flex flex-col md:flex-row">
+            <div class="md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
+              <span
+                class="inline-block bg-yellow-400 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-3"
+                >Flash Sale!</span
+              >
+              <h3 class="text-xl md:text-2xl font-bold text-white mb-2">
+                Diskon Hingga 40% untuk Semua Produk
+              </h3>
+              <p class="text-blue-100 text-sm mb-4">
+                Penawaran terbatas untuk produk pilihan
+              </p>
+              <button
+                class="bg-white hover:bg-gray-100 text-blue-600 px-4 py-2 rounded-button text-sm font-medium transition-colors self-start whitespace-nowrap"
+              >
+                Belanja Sekarang
+              </button>
+            </div>
+            <div class="md:w-1/2 h-48 md:h-64">
+              <img
+                src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+                alt="Flash Sale Product"
+                class="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Featured Deal -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="flex flex-col md:flex-row">
+            <div class="md:w-2/5 h-48 md:h-64">
+              <img
+                src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+                alt="Featured Deal"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <div class="md:w-3/5 p-6 flex flex-col justify-center">
+              <div class="flex items-center mb-3">
+                <span
+                  class="bg-red-100 text-red-600 text-xs font-medium px-2 py-1 rounded-full"
+                  >Penawaran Terbaik</span
+                >
+                <div class="flex items-center ml-3">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-half-fill"></i>
+                  </div>
+                  <span class="text-gray-500 text-xs ml-2">(98)</span>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold mb-2">
+                Premium Backpack Collection
+              </h3>
+              <p class="text-gray-600 text-sm mb-3">
+                Tas ransel premium dengan desain modern dan elegan. Dilengkapi
+                dengan kompartemen laptop dan bahan berkualitas tinggi.
+              </p>
+              <div class="flex items-baseline mb-4">
+                <span class="text-2xl font-bold text-gray-900">Rp 899.000</span>
+                <span class="text-base text-gray-500 line-through ml-2"
+                  >Rp 1.499.000</span
+                >
+                <span
+                  class="bg-green-100 text-green-600 text-xs font-medium px-2 py-1 rounded ml-2"
+                  >Hemat 40%</span
+                >
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <button
+                  class="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-button text-sm font-medium transition-colors whitespace-nowrap"
+                >
+                  Beli Sekarang
+                </button>
+                <button
+                  class="border border-gray-300 hover:border-primary text-gray-700 hover:text-primary px-4 py-2 rounded-button text-sm font-medium transition-colors whitespace-nowrap"
+                >
+                  Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Why Choose Us -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-4">
+          Mengapa Memilih Kami
+        </h2>
+        <p class="text-gray-600 text-center mb-12">
+          Kami menawarkan pengalaman belanja keyboard terbaik
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Feature 1 -->
+          <div class="flex flex-col items-center text-center">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full mb-4"
+            >
+              <i class="ri-truck-line text-2xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Pengiriman Gratis</h3>
+            <p class="text-gray-600">
+              Nikmati pengiriman gratis untuk semua pesanan di atas Rp 500.000
+              ke seluruh Indonesia
+            </p>
+          </div>
+          <!-- Feature 2 -->
+          <div class="flex flex-col items-center text-center">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-green-100 rounded-full mb-4"
+            >
+              <i class="ri-customer-service-2-line text-2xl text-secondary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Dukungan 24/7</h3>
+            <p class="text-gray-600">
+              Tim layanan pelanggan kami siap membantu Anda kapan saja melalui
+              chat, email, atau telepon
+            </p>
+          </div>
+          <!-- Feature 3 -->
+          <div class="flex flex-col items-center text-center">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-amber-100 rounded-full mb-4"
+            >
+              <i class="ri-refund-2-line text-2xl text-amber-500"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Garansi Uang Kembali</h3>
+            <p class="text-gray-600">
+              Jaminan pengembalian uang 100% jika produk tidak sesuai dengan
+              deskripsi
+            </p>
+          </div>
+          <!-- Feature 4 -->
+          <div class="flex flex-col items-center text-center">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-purple-100 rounded-full mb-4"
+            >
+              <i class="ri-shield-check-line text-2xl text-purple-500"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Produk Asli</h3>
+            <p class="text-gray-600">
+              Kami hanya menjual produk original dengan garansi resmi dari
+              distributor
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-4">Kontak Kami</h2>
+        <p class="text-gray-600 text-center mb-10">
+          Hubungi kami untuk informasi lebih lanjut
+        </p>
+        <div class="max-w-2xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="flex items-center space-x-4">
+              <div
+                class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center"
+              >
+                <i class="ri-map-pin-line text-primary text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800">Alamat</h3>
+                <p class="text-gray-600">Jl. Fashion Street No. 123, Jakarta</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div
+                class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center"
+              >
+                <i class="ri-phone-line text-primary text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800">Telepon</h3>
+                <p class="text-gray-600">+62 812 3456 7890</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div
+                class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center"
+              >
+                <i class="ri-mail-line text-primary text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800">Email</h3>
+                <p class="text-gray-600">info@fashionstore.com</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div
+                class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center"
+              >
+                <i class="ri-time-line text-primary text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800">Jam Operasional</h3>
+                <p class="text-gray-600">Senin - Minggu: 09:00 - 21:00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <!-- Company Info -->
+          <div>
+            <h3 class="text-xl font-bold mb-4">Tentang Kami</h3>
+            <a
+              href="#"
+              class="text-3xl font-['Pacifico'] text-primary mb-4 inline-block"
+              >logo</a
+            >
+            <p class="text-gray-400 mb-4">
+              KeyboardKing adalah toko keyboard terlengkap di Indonesia dengan
+              berbagai pilihan keyboard premium untuk gaming, typing, dan
+              kebutuhan profesional.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors"
+              >
+                <i class="ri-facebook-fill"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors"
+              >
+                <i class="ri-instagram-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors"
+              >
+                <i class="ri-twitter-x-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors"
+              >
+                <i class="ri-youtube-line"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Customer Service -->
+          <div>
+            <h3 class="text-xl font-bold mb-4">Layanan Pelanggan</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Bantuan & FAQ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Cara Pemesanan</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Pengiriman & Tracking</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Pengembalian & Refund</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Garansi Produk</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Hubungi Kami</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-xl font-bold mb-4">Link Cepat</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Beranda</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Produk Terbaru</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Best Seller</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Diskon & Promo</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Blog & Tutorial</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Karir</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-xl font-bold mb-4">Kontak Kami</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-3 mt-1"
+                >
+                  <i class="ri-map-pin-line"></i>
+                </div>
+                <span class="text-gray-400"
+                  >Jl. Keyboard No. 123, Jakarta Selatan, DKI Jakarta, Indonesia
+                  12345</span
+                >
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-3"
+                >
+                  <i class="ri-phone-line"></i>
+                </div>
+                <span class="text-gray-400">+62 21 1234 5678</span>
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-3"
+                >
+                  <i class="ri-mail-line"></i>
+                </div>
+                <span class="text-gray-400">info@keyboardking.id</span>
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-3"
+                >
+                  <i class="ri-time-line"></i>
+                </div>
+                <span class="text-gray-400"
+                  >Senin - Jumat: 08.00 - 20.00 WIB</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Payment Methods -->
+        <div class="border-t border-gray-800 pt-8 pb-4">
+          <h3 class="text-lg font-semibold mb-4">Metode Pembayaran</h3>
+          <div class="flex flex-wrap gap-4">
+            <div
+              class="w-12 h-8 flex items-center justify-center bg-white rounded p-1"
+            >
+              <i class="ri-visa-fill text-blue-800 text-2xl"></i>
+            </div>
+            <div
+              class="w-12 h-8 flex items-center justify-center bg-white rounded p-1"
+            >
+              <i class="ri-mastercard-fill text-2xl"></i>
+            </div>
+            <div
+              class="w-12 h-8 flex items-center justify-center bg-white rounded p-1"
+            >
+              <i class="ri-paypal-fill text-blue-600 text-2xl"></i>
+            </div>
+            <div
+              class="w-12 h-8 flex items-center justify-center bg-white rounded p-1"
+            >
+              <i class="ri-bank-card-fill text-gray-800 text-2xl"></i>
+            </div>
+            <div
+              class="w-12 h-8 flex items-center justify-center bg-white rounded p-1"
+            >
+              <i class="ri-alipay-fill text-blue-500 text-2xl"></i>
+            </div>
+            <div
+              class="w-12 h-8 flex items-center justify-center bg-white rounded p-1"
+            >
+              <i class="ri-bank-fill text-gray-800 text-2xl"></i>
+            </div>
+          </div>
+        </div>
+        <!-- Copyright -->
+        <div class="border-t border-gray-800 pt-8 text-center">
+          <p class="text-gray-500">
+            © 2025 KeyboardKing. Seluruh hak cipta dilindungi.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- Back to Top Button -->
+    <button
+      id="backToTop"
+      class="fixed bottom-6 right-6 w-12 h-12 flex items-center justify-center bg-gray-800 text-white rounded-full shadow-lg hover:bg-gray-700 transition-colors z-50 opacity-0 invisible"
+    >
+      <i class="ri-arrow-up-line text-xl"></i>
+    </button>
+    <script>
+      // Cek status login saat halaman dimuat
+      document.addEventListener("DOMContentLoaded", function () {
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        const loginBtn = document.querySelector('a[href="login.html"]');
+        const registerBtn = document.querySelector('a[href="register.html"]');
+
+        if (isLoggedIn) {
+          // Jika sudah login, ubah tampilan tombol login/register
+          if (loginBtn) {
+            loginBtn.innerHTML =
+              '<i class="ri-user-line"></i><span>Profil</span>';
+            loginBtn.href = "profile.html";
+          }
+          if (registerBtn) {
+            registerBtn.style.display = "none";
+          }
+        }
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById("backToTop");
+        window.addEventListener("scroll", function () {
+          if (window.pageYOffset > 300) {
+            backToTopButton.classList.remove("opacity-0", "invisible");
+            backToTopButton.classList.add("opacity-100", "visible");
+          } else {
+            backToTopButton.classList.remove("opacity-100", "visible");
+            backToTopButton.classList.add("opacity-0", "invisible");
+          }
+        });
+        backToTopButton.addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Fungsi untuk menambahkan ke keranjang
+      function addToCart(productId) {
+        // Cek apakah user sudah login
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+        if (!isLoggedIn) {
+          // Jika belum login, arahkan ke halaman login
+          window.location.href = "login.html";
+          return;
+        }
+
+        console.log("Menambahkan produk", productId, "ke keranjang");
+        // Implementasi logika keranjang di sini
+      }
+
+      // Fungsi untuk menangani klik pada produk
+      function handleProductClick(productId) {
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+        if (!isLoggedIn) {
+          window.location.href = "login.html";
+          return;
+        }
+
+        window.location.href = `detail.html?id=${productId}`;
+      }
+
+      // Fungsi untuk menghasilkan bintang rating
+      function generateStars(rating) {
+        // Batasi rating maksimal 5
+        rating = Math.min(rating, 5);
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 >= 0.5;
+        let stars = "";
+
+        // Tambahkan bintang penuh
+        for (let i = 0; i < fullStars; i++) {
+          stars += '<i class="ri-star-fill text-yellow-400"></i>';
+        }
+
+        // Tambahkan setengah bintang jika ada
+        if (hasHalfStar) {
+          stars += '<i class="ri-star-half-fill text-yellow-400"></i>';
+        }
+
+        // Tambahkan bintang kosong
+        const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+        for (let i = 0; i < emptyStars; i++) {
+          stars += '<i class="ri-star-line text-yellow-400"></i>';
+        }
+
+        return stars;
+      }
+
+      let currentPage = 1;
+      const productsPerPage = 6;
+      let allProducts = [];
+
+      // Fungsi untuk memuat produk dari API
+      async function loadProducts(loadAll = false) {
+        try {
+          if (allProducts.length === 0) {
+            const response = await fetch("https://fakestoreapi.com/products");
+            allProducts = await response.json();
+          }
+
+          const productGrid = document.getElementById("product-grid");
+          if (!loadAll) {
+            productGrid.innerHTML = ""; // Bersihkan grid sebelum menambahkan produk baru
+          }
+
+          const startIndex = 0;
+          const endIndex = loadAll
+            ? allProducts.length
+            : currentPage * productsPerPage;
+          const productsToShow = allProducts.slice(startIndex, endIndex);
+
+          productsToShow.forEach((product) => {
+            const productCard = `
+              <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg hover:-translate-y-1 cursor-pointer relative" data-id="${
+                product.id
+              }">
+                <div class="h-64 overflow-hidden">
+                  <img
+                    src="${product.image}"
+                    alt="${product.title}"
+                    class="w-full h-full object-contain"
+                  />
+                </div>
+                <div class="p-5">
+                  <div class="flex items-center mb-2">
+                    <div class="flex">
+                      ${generateStars(product.rating?.rate || 0)}
+                    </div>
+                    <span class="text-gray-500 text-sm ml-2">(${
+                      product.rating?.count || 0
+                    })</span>
+                  </div>
+                  <h3 class="text-lg font-semibold mb-1 line-clamp-2">${
+                    product.title
+                  }</h3>
+                  <p class="text-gray-500 text-sm mb-3">${product.category}</p>
+                  <div class="flex justify-between items-center">
+                    <span class="text-xl font-bold text-gray-900">Rp ${(
+                      product.price * 15000
+                    ).toLocaleString()}</span>
+                    <button onclick="event.stopPropagation(); addToCart(${
+                      product.id
+                    });" class="add-to-cart-btn bg-blue-500 text-white px-4 py-2 rounded-button text-sm font-medium">
+                      Tambah ke Keranjang
+                    </button>
+                  </div>
+                </div>
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                  <div class="text-white text-center p-4">
+                    <i class="ri-lock-line text-2xl mb-2"></i>
+                    <p>Login untuk melihat detail</p>
+                  </div>
+                </div>
+              </div>
+            `;
+            productGrid.innerHTML += productCard;
+          });
+
+          // Tambahkan event listener untuk setiap card
+          document.querySelectorAll(".product-card").forEach((card) => {
+            card.addEventListener("click", function () {
+              const productId = this.getAttribute("data-id");
+              handleProductClick(productId);
+            });
+          });
+
+          // Update tombol "Lihat Lebih Banyak"
+          const loadMoreBtn = document.getElementById("loadMoreBtn");
+          if (loadMoreBtn) {
+            if (endIndex >= allProducts.length) {
+              loadMoreBtn.style.display = "none";
+            } else {
+              loadMoreBtn.style.display = "inline-block";
+            }
+          }
+        } catch (error) {
+          console.error("Error loading products:", error);
+        }
+      }
+
+      // Event listener untuk tombol "Lihat Lebih Banyak"
+      document.getElementById("loadMoreBtn").addEventListener("click", () => {
+        currentPage++;
+        loadProducts();
+      });
+
+      // Event listener untuk tombol "Lihat Semua Item"
+      document.getElementById("showAllBtn").addEventListener("click", () => {
+        loadProducts(true);
+      });
+
+      // Event listener untuk pencarian
+      document.getElementById("searchInput").addEventListener("input", (e) => {
+        const query = e.target.value.toLowerCase();
+        const productCards = document.querySelectorAll(".product-card");
+
+        productCards.forEach((card) => {
+          const title = card.querySelector("h3").textContent.toLowerCase();
+          const category = card.querySelector("p").textContent.toLowerCase();
+
+          if (title.includes(query) || category.includes(query)) {
+            card.style.display = "";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+
+      // Load products saat halaman dimuat
+      loadProducts();
+    </script>
+    <script src="api.js"></script>
+  </body>
+</html>
